@@ -1,2 +1,8 @@
-a = 1+1
-print(a)
+#%%
+print("ぴょのー")
+
+# %%
+
+import timedisagg
+
+timedisagg?
