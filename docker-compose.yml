@@ -1,11 +1,17 @@
-version: '3'　# docker-composeファイルの書式バージョン。最新の’３’を指定（2019/6/27現在）
+version: "3"
 services:
-  dev: # 任意の名前（ディレクトリ名 + dev がコンテナ名となります）
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: ANATA_NO_IMAGE_NAME
+  notebook:
+　　 # https://hub.docker.com/r/jupyter/datascience-notebookからimageをpullする
+    image: jupyter/datascience-notebook
+    # ポートの設定("ホスト：コンテナ")
     ports:
-    - "8080:8888"
+      - "8888:8888"
+    # 環境変数の設定
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    # ボリューム(データの永続化の場所)の設定(ホスト:コンテナ)
+    # ホスト内のworkディレクトリとコンテナ内の/home/jovyan/workディレクトリが紐づいているイメージ
     volumes:
-    - .:/workdir
+      - ./work:/home/jovyan/work
+    # 最後にjupyterLabに接続するためのコマンドを実行する。
+    command: start-notebook.sh --NotebookApp.token=''
