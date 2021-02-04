@@ -17,6 +17,21 @@ RUN pip install --upgrade pip && \
     pip install Keras && \
     pip install tensorflow 
 
+# Install Julia
+#RUN wget https://julialang-s3.julialang.org/bin/linux/x64/1.5/julia-1.5.3-linux-x86_64.tar.gz
+
+# Juliaのパッケージインストール
+#RUN julia -e 'using Pkg; Pkg.add(["IJulia"]); using IJulia'
+#RUN sudo apt-get install -y build-essential
+#RUN julia -e 'using Pkg; Pkg.add(["PackageCompiler"]); using PackageCompiler'
+#RUN sudo apt-get install -y qt5-default
+#RUN julia -e 'using Pkg; Pkg.add(["UnicodePlots", "GR", "Plots"]); \
+#              using UnicodePlots, GR, Plots'
+#RUN julia -e 'using Pkg; Pkg.add(["Distributions"]); using Distributions'
+#RUN julia -e 'using Pkg; Pkg.add(["LinearAlgebra"]); using LinearAlgebra'
+#RUN julia -e 'using Pkg; Pkg.add(["PDMats"]); using PDMats'
+#RUN julia -e 'using Pkg; Pkg.add(["ProgressBars"]); using ProgressBars; '
+
 # コンテナ側のルート直下にworkdir/（任意）という名前の作業ディレクトリを作り移動する
 WORKDIR /workdir
 
